@@ -79,22 +79,6 @@ function setup() {
   graphic.angleMode(DEGREES);
   graphic.colorMode(HSB, 255);
 
-  //watering button
-  // const htmlButton = document.getElementById("trigger-btn");
-  // if (htmlButton) {
-  //   htmlButton.addEventListener("mousedown", () => {
-  //     isButtonPressed = true; //trigger
-  //   });
-
-  //   htmlButton.addEventListener("mouseup", () => {
-  //     isButtonPressed = false; // stop
-  //   });
-
-  //   htmlButton.addEventListener("mouseleave", () => {
-  //     isButtonPressed = false;
-  //   });
-  // }
-
   //connect to arduino
   const serialBtn = document.getElementById("trigger-btn");
 
