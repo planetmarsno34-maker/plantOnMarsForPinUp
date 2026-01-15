@@ -6,6 +6,7 @@ Date: 2026-01-07
 Instructions:
 - This is a interactive website.
 - Users can interact through a "watering" button to 
+  connect to arduino touch sensor to 
   alter the growth curves and expansion paths of the slime molds.
 
 */
@@ -79,25 +80,35 @@ function setup() {
   graphic.colorMode(HSB, 255);
 
   //watering button
-  const htmlButton = document.getElementById("trigger-btn");
-  if (htmlButton) {
-    htmlButton.addEventListener("mousedown", () => {
-      isButtonPressed = true; //trigger
-    });
+  // const htmlButton = document.getElementById("trigger-btn");
+  // if (htmlButton) {
+  //   htmlButton.addEventListener("mousedown", () => {
+  //     isButtonPressed = true; //trigger
+  //   });
 
-    htmlButton.addEventListener("mouseup", () => {
-      isButtonPressed = false; // stop
-    });
+  //   htmlButton.addEventListener("mouseup", () => {
+  //     isButtonPressed = false; // stop
+  //   });
 
-    htmlButton.addEventListener("mouseleave", () => {
-      isButtonPressed = false;
-    });
-  }
+  //   htmlButton.addEventListener("mouseleave", () => {
+  //     isButtonPressed = false;
+  //   });
+  // }
 
   //connect to arduino
-  const htmlButton = document.getElementById("button");
-  if (htmlButton) {
-    htmlButton.addEventListener("click", connectSerial);
+  const serialBtn = document.getElementById("trigger-btn");
+
+  if (serialBtn) {
+    serialBtn.addEventListener("click", async () => {
+      await connectSerial();
+
+      // connected
+      serialBtn.classList.add("active");
+      serialBtn.innerHTML = "CONNECTED";
+
+      // prevent to connect repeatedly
+      serialBtn.style.pointerEvents = "none";
+    });
   }
 
   angleMode(DEGREES);
@@ -118,8 +129,10 @@ function draw() {
 
   graphic.loadPixels();
 
-  if (isButtonPressed) {
-    drawDreamyGlow(graphic, 3, 3, isButtonPressed);
+  let isWatering = latestValue > threshold;
+
+  if (isWatering) {
+    drawDreamyGlow(graphic, 3, 3, isWatering);
     currentSpeed = 0.8;
     currentR = 1.1;
 

@@ -24,9 +24,9 @@ class Mold {
     this.x = (this.x + this.vx + RENDER_W) % RENDER_W;
     this.y = (this.y + this.vy + RENDER_H) % RENDER_H;
 
-    if (lastValue > threshold) {
-      let attractX = currentX - this.x;
-      let attractY = currentY - this.y;
+    if (latestValue > threshold) {
+      let attractX = RENDER_W / 2 - this.x;
+      let attractY = RENDER_H / 2 - this.y;
 
       let attractAngle = atan2(attractY, attractX);
       this.heading += (degrees(attractAngle) - this.heading) * 0.05;

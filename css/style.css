@@ -136,7 +136,8 @@ body {
   outline: none;
 }
 
-.trigger-btn:active {
+.trigger-btn:hover,
+.trigger-btn.active {
   color: #fff;
   background: rgba(35, 203, 83, 0.2);
   border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
