@@ -176,6 +176,8 @@ function drawDreamyGlow(targetGraphic, r1, r2, isPressed) {
   }
 
   timeOffset += 0.05;
+
+  console.log(latestValue);
 }
 
 function windowResized() {
