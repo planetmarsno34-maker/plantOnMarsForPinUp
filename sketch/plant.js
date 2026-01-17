@@ -1,7 +1,7 @@
 /*
 Name: Plant on Mars
 Author: Jing Chen
-Date: 2026-01-07
+Date: 2026-01-17
 
 Instructions:
 - This is a interactive website.
@@ -39,7 +39,9 @@ let threshold = 2000;
 
 async function connectSerial() {
   try {
-    port = await navigator.serial.requestPort();
+    const filters = [{ usbVendorId: 0x2341 }]; // arduino ID
+
+    port = await navigator.serial.requestPort({ filters });
     await port.open({ baudRate: 9600 });
 
     reader = port.readable.getReader();
