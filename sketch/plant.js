@@ -22,8 +22,8 @@ let bgStep = 30;
 
 // buffer
 let graphic;
-const RENDER_W = 400;
-const RENDER_H = 400;
+const RENDER_W = 800;
+const RENDER_H = 800;
 
 //dreamy background
 let noiseScale = 0.1;
@@ -35,7 +35,7 @@ let isButtonPressed = false;
 let port;
 let reader;
 let latestValue = 0;
-let threshold = 2000;
+let threshold = 250;
 
 async function connectSerial() {
   try {
